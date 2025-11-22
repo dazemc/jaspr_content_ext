@@ -6,10 +6,17 @@ import 'package:markdown/markdown.dart' as md;
 import 'package:syntax_highlight_lite/syntax_highlight_lite.dart';
 
 class MermaidRender {
-  const MermaidRender._();
+  //TODO: hash/cache svg
+  MermaidRender._();
   static final MermaidRender _instance = MermaidRender._();
   static const _command = 'mmdc';
-  static const _arguments = <String>['--input', '-'];
+  static const _arguments = <String>[
+    '--input',
+    '-',
+    '-o',
+    './web/images/out.svg',
+  ];
+  late String svg;
 
   factory MermaidRender() {
     return _instance;
@@ -115,8 +122,8 @@ class MermaidStaticComponent extends StatelessComponent {
     print("MERMAID: Rendering svg elements");
     mermaidRender.subProcess(mermaidString);
     // return pre(classes: ('mermaid'), [text(component.definition.toString())]);
-    // TODO:
-    // return svg([]);
+    // TODO: make a better svg lib
+    return img(src: './images/out.svg');
 
     return text(mermaidString);
   }

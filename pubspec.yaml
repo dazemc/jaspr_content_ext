@@ -10,6 +10,9 @@ environment:
 dependencies:
   path: ^1.9.0
   jaspr: ^0.21.7
+  jaspr_content: ^0.4.4
+  syntax_highlight_lite: ^0.0.1
 
 dev_dependencies:
   lints: ^6.0.0
+  build_runner: ^2.10.4

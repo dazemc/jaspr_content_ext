@@ -1,0 +1,98 @@
+import 'package:jaspr/server.dart';
+import 'package:syntax_highlight_lite/syntax_highlight_lite.dart';
+import 'package:jaspr_content/jaspr_content.dart';
+import 'package:markdown/markdown.dart' as md;
+
+class MermaidBlock extends CustomComponent {
+  MermaidBlock({
+    this.defaultLanguage = 'mermaid',
+    this.grammars = const {},
+    this.codeTheme,
+  }) : super.base();
+
+  static Component from({required String source, Key? key}) {
+    return MermaidStaticComponent(key: key, mermaidString: 'test');
+  }
+
+  /// The default language for the code block.
+  final String defaultLanguage;
+
+  /// The available grammars for the code block.
+  ///
+  /// The key is the name of the language.
+  /// The value is a json encoded string of the grammar.
+  final Map<String, String> grammars;
+
+  /// The default theme for the code block.
+  final HighlighterTheme? codeTheme;
+
+  bool _initialized = false;
+  HighlighterTheme? _defaultTheme;
+
+  @override
+  Component? create(Node node, NodesBuilder builder) {
+    if (node case ElementNode(tag: 'mermaid')) {
+      return AsyncBuilder(
+        builder: (context) async {
+          return MermaidStaticComponent(mermaidString: node.innerText);
+        },
+      );
+    }
+    return null;
+  }
+}
+
+class MermaidBlockSyntax extends md.BlockSyntax {
+  @override
+  RegExp get pattern => RegExp(r'^```mermaid\s*$');
+
+  @override
+  bool canParse(md.BlockParser parser) {
+    return pattern.hasMatch(parser.current.content);
+  }
+
+  @override
+  md.Node parse(md.BlockParser parser) {
+    parser.advance();
+
+    final buffer = StringBuffer();
+
+    // Collect lines until ```
+    while (!parser.isDone && !parser.current.content.startsWith('```')) {
+      buffer.writeln(parser.current.content);
+      parser.advance();
+    }
+
+    if (!parser.isDone) parser.advance();
+
+    return md.Element('mermaid', [md.Text(buffer.toString().trim())])
+      ..attributes['definition'] = buffer.toString().trim();
+  }
+}
+
+class MermaidStaticComponent extends StatelessComponent {
+  final String mermaidString;
+  const MermaidStaticComponent({super.key, required this.mermaidString});
+  @override
+  Component build(BuildContext context) {
+    print("DEF: $mermaidString");
+    // return pre(classes: ('mermaid'), [text(component.definition.toString())]);
+    // TODO:
+    // return svg([]);
+    return text(mermaidString);
+  }
+}
+
+class MermaidParser extends MarkdownParser {
+  const MermaidParser();
+
+  @override
+  DocumentBuilder get documentBuilder => (Page page) {
+    return md.Document(
+      blockSyntaxes: [
+        ...MarkdownParser.defaultBlockSyntaxes,
+        MermaidBlockSyntax(),
+      ],
+    );
+  };
+}

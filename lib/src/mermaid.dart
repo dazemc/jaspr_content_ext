@@ -119,9 +119,8 @@ class MermaidStaticComponent extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     final MermaidRender mermaidRender = .new();
-    final String uuid = mermaidString.hashCode.toString();
-    print(mermaidString.hashCode);
-    // print("MERMAID: $mermaidString\n\n");
+    final String uuid = _fastHash(mermaidString).toString();
+    print(uuid);
     print("MERMAID: Rendering svg elements");
     final String location = './images/$uuid.svg';
     final File file = .new('./web/$location');
@@ -137,5 +136,21 @@ class MermaidStaticComponent extends StatelessComponent {
     return img(src: location);
 
     return text(mermaidString);
+  }
+
+  int _fastHash(String string) {
+    //https://pub.dev/documentation/logs_vault/latest/schemes_logs_vault/fastHash.html
+    var hash = 0xcbf29ce484222325;
+
+    var i = 0;
+    while (i < string.length) {
+      final codeUnit = string.codeUnitAt(i++);
+      hash ^= codeUnit >> 8;
+      hash *= 0x100000001b3;
+      hash ^= codeUnit & 0xFF;
+      hash *= 0x100000001b3;
+    }
+
+    return hash;
   }
 }

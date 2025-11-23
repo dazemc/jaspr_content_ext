@@ -97,4 +97,4 @@ pubspec_overrides.yaml
 build/
 
 # Testing
-test/
+test/web/images/

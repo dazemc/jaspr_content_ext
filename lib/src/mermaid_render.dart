@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:jaspr/jaspr.dart' as j;
+import 'package:jaspr/server.dart';
 
 class MermaidRender {
   MermaidRender._();
@@ -13,7 +13,7 @@ class MermaidRender {
 
   void subProcess(String mermaidString, String uuid) async {
     late String svgDir;
-    if (j.kDebugMode) {
+    if (kDebugMode) {
       svgDir = './web/images/mermaid/';
     } else {
       Directory(buildDir).create(recursive: true);
@@ -26,6 +26,8 @@ class MermaidRender {
     final List<String> arguments = <String>[
       '--input',
       '-',
+      '-b',
+      'transparent',
       '-o',
       '$svgDir$uuid.svg',
     ];

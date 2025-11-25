@@ -94,17 +94,12 @@ class MermaidStaticComponent extends StatelessComponent {
   Component build(BuildContext context) {
     final MermaidRender mermaidRender = .new();
     final String uuid = fastHash(mermaidString).toString();
-    print(uuid);
-    print("MERMAID: Rendering svg elements");
-    final String location = './images/mermaid/$uuid.svg';
-    final File file = .new(location);
-    print(file.path);
-    if (file.existsSync()) {
-      print("reusing mermaid svg: $uuid");
-    } else {
+    final String svgDir = 'images/mermaid/$uuid.svg';
+    final File file = kDebugMode ? .new('./web/$svgDir') : .new(svgDir);
+    if (!file.existsSync()) {
       mermaidRender.subProcess(mermaidString, uuid);
     }
-    print(location);
-    return img(src: location);
+    //TODO: return as svg
+    return img(src: svgDir);
   }
 }

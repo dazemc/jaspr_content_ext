@@ -3,6 +3,63 @@ title: Welcome to Your New Docs Site!
 description: A placeholder page for your new documentation site.
 ---
 
+```mermaid
+%%{init: { 'theme': 'dark' } }%%
+graph TD
+    %% Config %%
+    classDef default fill:#282828,stroke:#F6BE00;
+    
+    %% Nodes %%
+    Component(Component)
+    Misc(&quot;
+        TimerComponent
+        ParticleComponent
+        SpriteBatchComponent
+    &quot;)
+    Effects(&quot;Effects&lt;br/&gt;(See the effects section)&quot;)
+    Game(Game)
+    FlameGame(FlameGame)
+    PositionComponent(PositionComponent)
+   
+    Sprites(&quot;
+        SpriteComponent
+        SpriteGroupComponent 
+        SpriteAnimationComponent
+        SpriteAnimationGroupComponent
+        ParallaxComponent 
+        IsoMetricTileMapComponent
+    &quot;)
+    
+    HudMarginComponent(HudMarginComponent)
+    HudComponents(&quot;
+        HudButtonComponent
+        JoystickComponent
+    &quot;)
+    
+    OtherPositionComponents(&quot;
+        ButtonComponent
+        CustomPainterComponent
+        ShapeComponent
+        SpriteButtonComponent
+        TextComponent
+        TextBoxComponent
+        NineTileBoxComponent
+    &quot;)
+        
+    %% Flow %%
+    Component --&gt; Misc
+    Component --&gt; Effects
+    Component --&gt; PositionComponent
+    Component --&gt; FlameGame
+   
+    Game --&gt; FlameGame
+    PositionComponent --&gt; Sprites
+    PositionComponent --&gt; HudMarginComponent
+    PositionComponent --&gt; OtherPositionComponents
+    HudMarginComponent --&gt; HudComponents
+```
+
+
 This is the starting point for your brand new documentation site, powered by the awesome `jaspr_content` package! Jaspr Content makes it easy to create beautiful and functional documentation. You can learn more about its features by visiting the [official documentation]({{links.docs}}).
 
 ## Getting Started
@@ -79,3 +136,4 @@ You can even **zoom-in** by clicking on the image.
 This is just a placeholder to get things started. 
 
 Feel free to explore the [Documentation]({{links.docs}}) to understand the underlying architecture and how you can customize your site further.
+

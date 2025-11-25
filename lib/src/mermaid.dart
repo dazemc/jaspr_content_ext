@@ -17,12 +17,19 @@ class MermaidRender {
   }
 
   void subProcess(String mermaidString, String uuid) async {
-    //TODO: ./web/images might not be the best location for this
+    String svgDir = './images/mermaid/';
+    if (!await File("index.html").exists()) {
+      svgDir = './web/images/mermaid/';
+    }
+    final dir = Directory(svgDir);
+    if (!await dir.exists()) {
+      dir.create(recursive: true);
+    }
     final List<String> arguments = <String>[
       '--input',
       '-',
       '-o',
-      './web/images/$uuid.svg',
+      '$svgDir$uuid.svg',
     ];
     final proc = await Process.start(_command, arguments);
     mermaidString
@@ -122,20 +129,19 @@ class MermaidStaticComponent extends StatelessComponent {
     final String uuid = _fastHash(mermaidString).toString();
     print(uuid);
     print("MERMAID: Rendering svg elements");
-    final String location = './images/$uuid.svg';
-    final File file = .new('./web/$location');
+    final String location = './images/mermaid/$uuid.svg';
+    final File file = .new(location);
     print(file.path);
     if (file.existsSync()) {
       print("reusing mermaid svg: $uuid");
     } else {
       mermaidRender.subProcess(mermaidString, uuid);
     }
+    print(location);
 
     // return pre(classes: ('mermaid'), [text(component.definition.toString())]);
     // TODO: make a better svg lib
     return img(src: location);
-
-    return text(mermaidString);
   }
 
   int _fastHash(String string) {
@@ -151,6 +157,7 @@ class MermaidStaticComponent extends StatelessComponent {
       hash *= 0x100000001b3;
     }
 
-    return hash;
+    // fit signed bit, keep lower 31 bits
+    return hash & 0x7FFFFFFF;
   }
 }

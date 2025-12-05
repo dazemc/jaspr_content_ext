@@ -1,44 +1,20 @@
 import 'dart:io';
 
 import 'package:jaspr/server.dart';
-import 'package:html/parser.dart' show parse;
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:xml/xml.dart';
 import 'mermaid_render.dart';
+import 'utils.dart' as util;
 
 class MermaidExtension extends PageExtension {
   MermaidExtension();
 
   @override
   Future<List<Node>> apply(Page page, List<Node> nodes) async {
-    return [for (final node in nodes) await _processNode(node)];
-  }
-
-  Future<Node> _processNode(Node node) async {
-    switch (node) {
-      case TextNode():
-        break;
-      case ElementNode():
-        final first = node.children?.first;
-        if (first is ElementNode) {
-          if (first.attributes.containsValue('language-mermaid')) {
-            final mermaidString = _unescapeHtml(first.innerText);
-            return ComponentNode(
-              MermaidComponent(mermaidString: mermaidString),
-            );
-          }
-        }
-        break;
-      case ComponentNode():
-        break;
-    }
-    return node;
-  }
-
-  String _unescapeHtml(String htmlText) {
-    final document = parse(htmlText);
-    final String decoded = document.body?.text ?? document.text ?? "";
-    return decoded;
+    return [
+      for (final node in nodes)
+        await util.processNode(node, 'language-mermaid', util.mermaidNode),
+    ];
   }
 }
 

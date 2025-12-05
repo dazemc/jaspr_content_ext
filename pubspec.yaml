@@ -1,5 +1,5 @@
-name: jaspr_content_mermaid 
-description: jaspr_content mermaid support
+name: jaspr_content_codeblock_ext
+description: jaspr_content codeblock extensions
 version: 0.0.1
 # repository: https://github.com/my_org/my_repo
 
@@ -20,4 +20,5 @@ dependencies:
 dev_dependencies:
   lints: ^6.0.0
   build_runner: ^2.10.4
+  custom_lint: ^0.8.1
 

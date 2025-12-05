@@ -9,7 +9,7 @@ dependencies:
   jaspr: ^0.21.7
   jaspr_content: ^0.4.4
   jaspr_router: ^0.8.0
-  jaspr_content_mermaid:
+  jaspr_content_ext:
     path: ../
 
 dev_dependencies:

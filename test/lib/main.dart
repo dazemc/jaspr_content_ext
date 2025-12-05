@@ -15,7 +15,7 @@ import 'package:jaspr_content/components/sidebar.dart';
 import 'package:jaspr_content/components/theme_toggle.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:jaspr_content/theme.dart';
-import 'package:jaspr_content_mermaid/jaspr_content_mermaid.dart';
+import 'package:jaspr_content_ext/jaspr_content_mermaid.dart';
 
 import 'components/clicker.dart';
 

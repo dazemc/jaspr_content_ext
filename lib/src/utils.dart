@@ -26,7 +26,6 @@ Future<Node> processNode(
 }
 
 ComponentNode mermaidNode(Node node) {
-  print("Mermaid node: $node");
   final mermaidString = _unescapeHtml(node.innerText);
   return ComponentNode(MermaidComponent(mermaidString: mermaidString));
 }

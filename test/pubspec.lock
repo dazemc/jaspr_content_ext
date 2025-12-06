@@ -53,10 +53,10 @@ packages:
     dependency: transitive
     description:
       name: bazel_worker
-      sha256: "47e5106e06dcbfd7382b903b676d48974387b8612ca470f6c54f367ca90da32b"
+      sha256: "87cae9150fcf9942b8057e5f51c4848a3efde1289e97411e1c8f01e350120999"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.4"
+    version: "1.1.5"
   boolean_selector:
     dependency: transitive
     description:
@@ -540,10 +540,10 @@ packages:
     dependency: transitive
     description:
       name: protobuf
-      sha256: "2fcc8a202ca7ec17dab7c97d6b6d91cf03aa07fe6f65f8afbb6dfa52cc5bd902"
+      sha256: "75ec242d22e950bdcc79ee38dd520ce4ee0bc491d7fadc4ea47694604d22bf06"
       url: "https://pub.dev"
     source: hosted
-    version: "5.1.0"
+    version: "6.0.0"
   pub_semver:
     dependency: transitive
     description:

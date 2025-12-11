@@ -241,13 +241,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.3"
-  duppix:
-    dependency: "direct overridden"
-    description:
-      path: "../../duppix"
-      relative: true
-    source: path
-    version: "1.0.0"
   fbh_front_matter:
     dependency: transitive
     description:
@@ -680,12 +673,11 @@ packages:
     source: hosted
     version: "1.4.1"
   syntax_highlight_lite:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
-      name: syntax_highlight_lite
-      sha256: ff54f69159263e26b843c64a2dc556ac7bbbc66690eb6d500aefb341cf4957a0
-      url: "https://pub.dev"
-    source: hosted
+      path: "lcov_format_self_sub/packages/syntax_highlight_lite"
+      relative: true
+    source: path
     version: "0.0.1"
   term_glyph:
     dependency: transitive

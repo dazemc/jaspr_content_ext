@@ -2,18 +2,13 @@
 title: Welcome to Your New Docs Site!
 description: A placeholder page for your new documentation site.
 ---
+```go
+package main
 
-```dart
-// lib/main.dart
-import 'package:jaspr/jaspr.dart';
-import 'package:jaspr_content/jaspr_content.dart';
+import "fmt"
 
-void main() {
-  runApp(ContentApp(
-    parsers: [
-      MarkdownParser(),
-    ],
-  ));
+func main() {
+    fmt.Println("hello world")
 }
 ```
 

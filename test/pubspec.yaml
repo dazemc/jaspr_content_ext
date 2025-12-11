@@ -23,7 +23,8 @@ jaspr:
   mode: static
   
 dependency_overrides:
-  # syntax_highlight_lite:
+  syntax_highlight_lite:
     # path: ../../lcov_format/packages/syntax_highlight_lite/
-  duppix:
-    path: ../../duppix/
+    path: lcov_format_self_sub/packages/syntax_highlight_lite/
+  # duppix:
+  #   path: ../../duppix/

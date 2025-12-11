@@ -4,10 +4,12 @@
 // To run code on the client, use the @client annotation.
 
 // Server-specific jaspr import.
+import 'dart:convert';
+
 import 'package:jaspr/server.dart';
 
 import 'package:jaspr_content/components/callout.dart';
-import 'package:jaspr_content/components/code_block.dart';
+// import 'package:jaspr_content/components/code_block.dart';
 import 'package:jaspr_content/components/github_button.dart';
 import 'package:jaspr_content/components/header.dart';
 import 'package:jaspr_content/components/image.dart';
@@ -17,6 +19,7 @@ import 'package:jaspr_content/jaspr_content.dart';
 import 'package:jaspr_content/theme.dart';
 import 'package:jaspr_content_ext/jaspr_content_ext.dart';
 
+import 'components/code_block.dart';
 import 'components/clicker.dart';
 
 // This file is generated automatically by Jaspr, do not remove or edit.
@@ -54,8 +57,8 @@ void main() {
         // Well now I know why highlight doesn't support other langs,
         CodeBlock(
           grammars: {
-            "dart": grammars.dart,
-            "rust": grammars.rust,
+            // "dart": grammars.dart,
+            // "rust": grammars.rust,
             // "css": grammars.css,
             "go": grammars.go,
             // "html": grammars.html,

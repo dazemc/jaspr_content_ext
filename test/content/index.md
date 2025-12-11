@@ -4,10 +4,20 @@ description: A placeholder page for your new documentation site.
 ---
 
 ```dart
-echo "testing"
-ls
+// lib/main.dart
+import 'package:jaspr/jaspr.dart';
+import 'package:jaspr_content/jaspr_content.dart';
 
+void main() {
+  runApp(ContentApp(
+    parsers: [
+      MarkdownParser(),
+    ],
+  ));
+}
 ```
+
+
 
 
 ```mermaid
@@ -114,21 +124,6 @@ graph TD
     C --> D[Test Block]
 ```
 
-
-
-```dart
-// lib/main.dart
-import 'package:jaspr/jaspr.dart';
-import 'package:jaspr_content/jaspr_content.dart';
-
-void main() {
-  runApp(ContentApp(
-    parsers: [
-      MarkdownParser(),
-    ],
-  ));
-}
-```
 
 ## Images
 

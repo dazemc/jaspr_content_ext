@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/server.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:xml/xml.dart';
@@ -36,7 +37,7 @@ class MermaidComponent extends AsyncStatelessComponent {
     if (component != null) {
       // return component;
     } else {
-      return text(
+      return Component.text(
         "Error processing svg file for mermaid diagram: $uuid\n$mermaidString",
       );
     }

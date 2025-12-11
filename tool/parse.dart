@@ -1,3 +1,4 @@
+//TODO: Strip comments in tmLanguage.json files
 import 'dart:convert';
 import 'dart:io';
 

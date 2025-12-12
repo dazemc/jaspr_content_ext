@@ -1,3 +1,0 @@
-[submodule "src/vscode"]
-	path = src/vscode
-	url = https://github.com/microsoft/vscode.git

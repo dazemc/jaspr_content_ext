@@ -1,12 +1,11 @@
-name: jaspr_content_ext
-description: jaspr_content codeblock and syntax extensions
+name: jaspr_mermaid
+description: jaspr_content mermaid generation
 version: 0.0.1
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/dazemc/jaspr_mermaid
 
 environment:
   sdk: ^3.10.0
 
-# Add regular dependencies here.
 dependencies:
   path: ^1.9.0
   jaspr: ^0.22.0

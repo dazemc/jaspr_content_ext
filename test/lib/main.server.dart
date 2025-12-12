@@ -9,7 +9,7 @@ import 'dart:convert';
 import 'package:jaspr/server.dart';
 
 import 'package:jaspr_content/components/callout.dart';
-// import 'package:jaspr_content/components/code_block.dart';
+import 'package:jaspr_content/components/code_block.dart';
 import 'package:jaspr_content/components/github_button.dart';
 import 'package:jaspr_content/components/header.dart';
 import 'package:jaspr_content/components/image.dart';
@@ -19,14 +19,12 @@ import 'package:jaspr_content/jaspr_content.dart';
 import 'package:jaspr_content/theme.dart';
 import 'package:jaspr_content_ext/jaspr_content_ext.dart';
 
-import 'components/code_block.dart';
 import 'components/clicker.dart';
 
 // This file is generated automatically by Jaspr, do not remove or edit.
 import 'main.server.options.dart';
 
 void main() {
-  final grammars = Grammar();
   // Initializes the server environment with the generated default options.
   Jaspr.initializeApp(
     options: defaultServerOptions,
@@ -55,23 +53,7 @@ void main() {
         Callout(),
         // Adds syntax highlighting to code blocks.
         // Well now I know why highlight doesn't support other langs,
-        CodeBlock(
-          grammars: {
-            // "dart": grammars.dart,
-            // "rust": grammars.rust,
-            // "css": grammars.css,
-            "go": grammars.go,
-            // "html": grammars.html,
-            // "java": grammars.java,
-            // "json": grammars.json,
-            // "kotlin": grammars.kotlin,
-            // "python": grammars.python,
-            // "sql": grammars.sql,
-            // "swift": grammars.swift,
-            // "typescript": grammars.typescript,
-            // "yaml": grammars.yaml,
-          },
-        ),
+        CodeBlock(),
         // Adds a custom Jaspr component to be used as <Clicker/> in markdown.
         // CustomComponent(
         // pattern: 'Clicker',
